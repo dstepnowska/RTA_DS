@@ -24,11 +24,11 @@ def generate_transaction():
 
 # TWÓJ KOD
 # Pętla: generuj transakcję, wyślij do tematu 'transactions', wypisz, sleep 1s
-for i in range(1000): #while true petla, zeby byla w nieskonczonosc, #ale wylacza sie przy wylaczeniu terminala czy cos 
+for i in range(1000): 
     tx = generate_transaction() 
     producer.send('transactions', value=tx) 
     print(f"[{i+1}] {tx['tx_id']} | {tx['amount']:.2f} PLN | {tx['store']}") 
-    time.sleep(1) #tu mozna uruchomic kilku producentow, zeby ta wysylka nie byla caly czas tak samo 
-
+    time.sleep(1)
+    
 producer.flush()
 producer.close() 
